@@ -27,7 +27,7 @@ function CreateElement(){
         }
         
 }
- //const add 
+ 
  function adicionar(){
 
       
@@ -41,7 +41,6 @@ function CreateElement(){
          place.appendChild(liElement)
         
          function reset(){
-                 document.querySelector('input')
                  read.value = ''
          }
          reset()
