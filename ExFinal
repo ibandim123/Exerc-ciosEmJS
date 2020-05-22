@@ -1,0 +1,76 @@
+/*
+Crie uma tela com um <input> que deve receber o nome de um usuário no Github. Após digitar o
+nome do usuário e clicar no botão buscar a aplicação deve buscar pela API do Github (conforme
+URL abaixo) os dados de repositórios do usuário e mostrá-los em tela:
+URL de exemplo: https://api.github.com/users/diego3g/repos
+Basta alterar "diego3g" pelo nome do usuário.
+<input type="text" name="user">
+<button onclick="">Adicionar</button>
+Depois de preencher o input e adicionar, a seguinte lista deve aparecer abaixo:
+<ul>
+ <li>repo1</li>
+ <li>repo2</li>
+ <li>repo3</li>
+ <li>repo4</li>
+ <li>repo5</li>
+</ul>
+
+*/
+
+var data =[];
+var lists = ['repo1', 'repo2' ,'repo3','repo4','repo5'];
+
+
+        var tagElement = document.querySelector('div')
+        var crtag = document.createElement('input')
+        crtag.setAttribute('type:','number')
+        crtag.setAttribute('name:','user')
+
+        tagElement.appendChild(crtag)
+
+function pesquisar(){
+
+        
+
+        //pesquisar no API do Github, os dados do usuário.
+        var gitRequest = new XMLHttpRequest();
+        var read = document.querySelector('input')
+                console.log(read.value);
+             // gitRequest.addEventListener("load", pesquisar);
+              
+                gitRequest.open("GET",  `https://api.github.com/users/${read.value}/repos`);
+                gitRequest.send(data);
+        //realizar o retorno na página
+        gitRequest.onreadystatechange = function(){
+                if(gitRequest.readyState === 4){  
+                  if(gitRequest.status === 200) {              
+                        console.log(JSON.parse(gitRequest.responseText))
+                
+        }else{
+                console.log('Usuário não encontrado')
+        }
+}
+        
+        }
+        //A lista
+        for(list of lists){
+        var a = document.createElement('ul')
+        var repo = document.createElement('li')
+        a.appendChild(repo)
+        console.log(a)
+
+        var listText = document.createTextNode(list)
+        repo.appendChild(listText)
+
+        }
+        read.value = ''
+                
+}   
+                
+
+
+
+
+
+        
+
